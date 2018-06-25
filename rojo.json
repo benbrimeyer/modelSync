@@ -2,9 +2,21 @@
   "name": "modelSync",
   "servePort": 8000,
   "partitions": {
-  	"ReplicatedStorage": {
+  	"mainPlugin": {
   		"path": "source",
-  		"target": "ReplicatedStorage.modelSync"
+  		"target": "ReplicatedStorage.modelSync.source"
   	},
+  	"roact-rodux": {
+  		"path": "roact-rodux",
+  		"target": "ReplicatedStorage.modelSync.roact-rodux"
+  	},
+  	"roact": {
+  		"path": "roact-rodux",
+  		"target": "ReplicatedStorage.modelSync.roact"
+  	},
+  	"rodux": {
+  		"path": "rodux",
+  		"target": "ReplicatedStorage.modelSync.rodux"
+  	}
   }
 }

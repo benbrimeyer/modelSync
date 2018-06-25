@@ -1,3 +1,9 @@
 [submodule "roact-rodux"]
 	path = roact-rodux
 	url = https://github.com/Roblox/roact-rodux.git
+[submodule "rodux"]
+	path = rodux
+	url = https://github.com/Roblox/Rodux
+[submodule "roact"]
+	path = roact
+	url = https://github.com/Roblox/Roact
