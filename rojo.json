@@ -1,0 +1,10 @@
+{
+  "name": "modelSync",
+  "servePort": 8000,
+  "partitions": {
+  	"ReplicatedStorage": {
+  		"path": "source",
+  		"target": "ReplicatedStorage.modelSync"
+  	},
+  }
+}
