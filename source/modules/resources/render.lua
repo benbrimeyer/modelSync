@@ -1,12 +1,14 @@
-local require = shared.require
-
-local tv = require("v")
+local tv = require(shared.modelSync.root.Parent.v.v)
 
 local CollectionService = game:GetService("CollectionService")
 
-local function render(sourceModel)
+local function render(datamodelRoot, sourceModel)
 	local tagName = sourceModel.Name
 	for _, oldObject in pairs(CollectionService:GetTagged(tagName)) do
+		if not oldObject:IsDescendantOf(datamodelRoot) then
+			return
+		end
+
 		local previousCFrame = oldObject.PrimaryPart.CFrame
 		oldObject:ClearAllChildren()
 
@@ -21,7 +23,11 @@ local function render(sourceModel)
 	end
 end
 
-return function(optionalTags)
+local check = tv.tuple(tv.optional(tv.Instance), tv.optional(tv.strictArray(tv.string)))
+return function(datamodelRoot, optionalTags)
+	assert(check(datamodelRoot, optionalTags))
+	datamodelRoot = datamodelRoot or workspace
+
 	local map = {}
 	if optionalTags then
 		for _, tag in pairs(optionalTags) do
@@ -31,7 +37,7 @@ return function(optionalTags)
 
 	for _, sourceModel in pairs(shared.modelSync.magicFolder:GetChildren()) do
 		if map[sourceModel.Name] or not optionalTags then
-			render(sourceModel)
+			render(datamodelRoot, sourceModel)
 		end
 	end
 end

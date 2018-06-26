@@ -1,4 +1,7 @@
+local tv = require(shared.modelSync.root.Parent.v.v)
+
 return function(root)
+	assert(tv.Instance(root))
 	local cache = {}
 	for _, object in pairs(root:GetDescendants()) do
 		if object:IsA("ModuleScript") then
@@ -11,6 +14,7 @@ return function(root)
 	end
 
 	return function(name)
+		assert(tv.string(name))
 		return require(cache[name])
 	end
 end
