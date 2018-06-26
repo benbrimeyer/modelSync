@@ -7,3 +7,6 @@
 [submodule "roact"]
 	path = roact
 	url = https://github.com/Roblox/Roact
+[submodule "tv"]
+	path = tv
+	url = https://github.com/osyrisrblx/t
