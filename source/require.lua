@@ -1,4 +1,4 @@
-local tv = require(shared.modelSync.root.Parent.v.v)
+local tv = require(shared.modelSync.root.Parent.tv.t)
 
 return function(root)
 	assert(tv.Instance(root))
