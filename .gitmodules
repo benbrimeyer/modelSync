@@ -7,6 +7,3 @@
 [submodule "roact"]
 	path = roact
 	url = https://github.com/Roblox/Roact
-[submodule "v"]
-	path = v
-	url = https://github.com/osyrisrblx/v
