@@ -1,9 +1,10 @@
 local CollectionService = game:GetService("CollectionService")
 
+local create = require(script.Parent.create)
+local destroy = require(script.Parent.destruct)
 local constants = require(script.Parent.constants)
 local signals = require(script.Parent.signals)
-
-
+local render = require(script.Parent.render)
 
 local function setMagicFolder(folder)
 	if folder:IsA("Folder") then
@@ -29,12 +30,12 @@ local function setMagicFolder(folder)
 		end
 
 		local function addChild(child)
-			signals.childAdded:fire(child)
+			create(child)
 		end
 
 		local function removeChild(childName)
 			if count(childName) == 0 then
-				signals.childRemoved:fire(childName)
+				destroy(childName)
 			end
 		end
 
@@ -85,6 +86,7 @@ return function()
 		local selection = game.Selection:Get()[1]
 		local folder = Instance.new("Folder")
 		folder.Name = "sources-(modelSync)"
+		CollectionService:AddTag(folder, constants.MAGIC_FOLDER_TAG)
 		folder.Parent = selection and selection.Parent or workspace
 		setMagicFolder(folder)
 	elseif #tagged > 1 then
