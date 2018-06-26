@@ -17,6 +17,10 @@
   	"rodux": {
   		"path": "rodux",
   		"target": "ReplicatedStorage.modelSync.rodux"
-  	}
+  	},
+    "v": {
+      "path": "v/src",
+      "target": "ReplicatedStorage.modelSync.v"
+    }
   }
 }
